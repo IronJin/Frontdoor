@@ -7,9 +7,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/frontdoor?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3307/frontdoor?serverTimezone=Asia/Seoul
     username: root
-    password: wldhks0107
+    password: didcjf12
 
 mybatis:
   type-aliases-package: frontdoorprivacy.model

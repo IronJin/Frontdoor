@@ -5,7 +5,7 @@ public class UpdateUser {
         private String P_PhoneNumber;
         private String P_UserId;
         private String P_Password;
-        private String P_EmailAddress;
+        private String P_Email;
 
     public int getId() {
         return id;
@@ -39,12 +39,12 @@ public class UpdateUser {
         P_Password = p_Password;
     }
 
-    public String getP_EmailAddress() {
-        return P_EmailAddress;
+    public String getP_Email() {
+        return P_Email;
     }
 
-    public void setP_EmailAddress(String p_EmailAddress) {
-        P_EmailAddress = p_EmailAddress;
+    public void setP_Email(String p_Email) {
+        P_Email = p_Email;
     }
 
     public UpdateUser() {

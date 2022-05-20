@@ -1,6 +1,5 @@
 package frontdoorprivacy.model.enterprise;
 
-import frontdoorprivacy.model.user.UseYN;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +16,7 @@ public class Enterprise {
     private String createDateTime;
     private String updateDateTime;
     private String accountNumber;
-    private UseYN useYN;
+    private String useYN;
 
     public Enterprise(String enterpriseName, String enterpriseNumber, String address, String enterpriseId, String password,
                       String phoneNumber, String createDateTime, String updateDateTime, String accountNumber) {

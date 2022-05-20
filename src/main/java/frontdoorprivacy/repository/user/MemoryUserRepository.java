@@ -1,7 +1,5 @@
 package frontdoorprivacy.repository.user;
 
-import frontdoorprivacy.model.user.Role;
-import frontdoorprivacy.model.user.UseYN;
 import frontdoorprivacy.model.user.User;
 import org.springframework.stereotype.Component;
 
@@ -16,12 +14,12 @@ public class MemoryUserRepository implements UserRepository {
 
     @Override
     public User save(User user) {
-        //sequence 는 기본 id값 (int 형)
-        user.setId(++sequence);
-        user.setRole(Role.Basic);
-        user.setUserYN(UseYN.Yes);
-        //해쉬맵에 정보를 저장해줌
-        store.put(user.getId(), user);
+//        //sequence 는 기본 id값 (int 형)
+//        user.setId(++sequence);
+//        user.setRole(Role.Basic);
+//        user.setUserYN(UseYN.Yes);
+//        //해쉬맵에 정보를 저장해줌
+//        store.put(user.getId(), user);
         return store.get(user.getUserId());
     }
 

@@ -1,23 +1,16 @@
 package frontdoorprivacy.controller;
 
-import frontdoorprivacy.model.user.JoinUser;
-import frontdoorprivacy.model.user.MyPageUser;
-import frontdoorprivacy.model.user.UpdateUser;
 import frontdoorprivacy.model.user.User;
+import frontdoorprivacy.model.user.UpdateUser;
 import frontdoorprivacy.service.user.UserService;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
-
-import static java.lang.Integer.valueOf;
 
 /**
  * 5월 3일 구현 시작
@@ -112,33 +105,40 @@ import static java.lang.Integer.valueOf;
 @Controller
 @RequestMapping("/user")
 public class UserController{
+
     private Logger logger = LoggerFactory.getLogger(UserController.class);
     private static UserService userService;
+
     @Autowired
     public UserController(UserService userService){
         this.userService = userService;
-
     }
-    @GetMapping("/{userID}")
-    public ResponseEntity<MyPageUser> info(Model model, @PathVariable int userID) {
 
-        MyPageUser userInfo = userService.getUserInfo(userID);
+
+    @GetMapping("/{userID}")
+    public ResponseEntity<User> info(@PathVariable int userID) {
+
+        User userInfo = userService.getUserInfo(userID);
 
         return new ResponseEntity<>(userInfo,HttpStatus.OK);
     }
 
+
+
     @PostMapping("/{userID}")
-    public void update(@PathVariable int userID, @RequestBody MyPageUser updateUser){
+    public ResponseEntity<UpdateUser> update(@PathVariable int userID, @RequestBody User user){
 
         UpdateUser founduser = new UpdateUser();
 
         founduser.setId(userID);
-        founduser.setP_UserId(updateUser.getUserId());
-        founduser.setP_EmailAddress(updateUser.getEmailaddress());
-        founduser.setP_Password(updateUser.getPassword());
-        founduser.setP_PhoneNumber(updateUser.getPhoneNumber());
+        founduser.setP_UserId(user.getUserId());
+        founduser.setP_Email(user.getEmail());
+        founduser.setP_Password(user.getPassword());
+        founduser.setP_PhoneNumber(user.getPhoneNumber());
 
-                userService.updateUserInfo(founduser);
+        userService.updateUserInfo(founduser);
+
+        return new ResponseEntity<>(founduser, HttpStatus.OK);
     }
 }
 

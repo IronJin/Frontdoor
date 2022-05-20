@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="frontdoorprivacy.mapper.UserMapper">
-    <select id="getUserInfo" resultType="MyPageUser" parameterType="Integer" statementType="CALLABLE">
+    <select id="getUserInfo" resultType="User" parameterType="Integer" statementType="CALLABLE">
         { CALL FND_sd_User_Info(
                 #{id}
         )
@@ -15,7 +15,7 @@
                 #{P_PhoneNumber},
                 #{P_UserId},
                 #{P_Password},
-                #{P_EmailAddress}
+                #{P_Email}
         )
         }
     </update>
