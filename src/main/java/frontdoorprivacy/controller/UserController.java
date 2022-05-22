@@ -1,5 +1,6 @@
 package frontdoorprivacy.controller;
 
+import frontdoorprivacy.model.user.JoinUser;
 import frontdoorprivacy.model.user.User;
 import frontdoorprivacy.model.user.UpdateUser;
 import frontdoorprivacy.service.user.UserService;
@@ -115,6 +116,11 @@ public class UserController{
     }
 
 
+    /**
+     * 마이페이지에 정보 보내주기
+     * @param userID
+     * @return
+     */
     @GetMapping("/{userID}")
     public ResponseEntity<User> info(@PathVariable int userID) {
 
@@ -124,7 +130,9 @@ public class UserController{
     }
 
 
-
+    /**
+     * 마이페이지에서 수정받은 정보 받아서 다시 보내주기
+     */
     @PostMapping("/{userID}")
     public ResponseEntity<UpdateUser> update(@PathVariable int userID, @RequestBody User user){
 
@@ -140,6 +148,16 @@ public class UserController{
 
         return new ResponseEntity<>(founduser, HttpStatus.OK);
     }
+
+    /**
+     * 회원가입
+     */
+    @PostMapping("/register")
+    public void join(@RequestBody JoinUser joinUser){
+
+        userService.joinUserInfo(joinUser);
+    }
+
 }
 
 

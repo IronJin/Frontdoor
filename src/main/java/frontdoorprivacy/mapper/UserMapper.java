@@ -1,6 +1,7 @@
 package frontdoorprivacy.mapper;
 
 
+import frontdoorprivacy.model.user.JoinUser;
 import frontdoorprivacy.model.user.User;
 import frontdoorprivacy.model.user.UpdateUser;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,4 +15,5 @@ public interface UserMapper {
 
     void updateUserInfo(UpdateUser updateUser);
 
+    void joinUserInfo(JoinUser joinUser);
 }

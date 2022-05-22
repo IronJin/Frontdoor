@@ -20,4 +20,16 @@
         }
     </update>
 
+    <insert id="joinUserInfo" parameterType="JoinUser" statementType="CALLABLE">
+        { Call FND_in_User(
+                #{userName},
+                #{birth},
+                #{phoneNumber},
+                #{userId},
+                #{password},
+                #{email}
+        )
+        }
+    </insert>
+
 </mapper>
